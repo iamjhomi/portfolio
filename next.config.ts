@@ -2,9 +2,10 @@ import type { NextConfig } from "next";
 import path from 'path';
 
 const nextConfig: NextConfig = {
-  // Use static export only in production (for GitHub Pages). During local
-  // development we leave `output` unset so middleware and dev features work.
+  // Use static export and basePath only in production (for GitHub Pages).
+  // During local development leave these unset so dev server serves at /
   output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
+  basePath: process.env.NODE_ENV === 'production' ? '/portfolio' : undefined,
   images: {
     unoptimized: true,
     remotePatterns: [
