@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Redirecting…</title>
+    <!-- Safe client-side redirect to /portfolio for local dev and static hosting.
+         This only redirects when the current path is exactly '/' to avoid redirect
+         loops that can cause `/portfolio/portfolio` to appear. Use replace() so
+         the browser history doesn't keep the temporary index page. -->
+    <meta http-equiv="refresh" content="0; url=/portfolio">
+    <script>
+      (function () {
+        try {
+          var p = window.location.pathname || '/';
+          // If already under /portfolio, don't redirect
+          if (p === '/' || p === '') {
+            window.location.replace('/portfolio');
+          }
+        } catch (e) {
+          // Fallback to absolute redirect
+          window.location.replace('/portfolio');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    Redirecting to <a href="/portfolio/">/portfolio/</a>
+  </body>
+</html>
